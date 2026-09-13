@@ -83,10 +83,7 @@ app.delete("/api/students/:id", (req, res) => {
   });
 });
 
-// Test route
-app.get("/", (req, res) => {
-  res.send("Academia Portal Backend is Running!");
-});
+
 // Test route
 app.get("/", (req, res) => {
   res.send("Academia Portal Backend is Running!");

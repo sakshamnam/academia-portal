@@ -222,6 +222,7 @@ function clearDemoData() {
     alert("Demo data cleared!");
     window.location.href = "index.html";
 }
+
 async function loadStudents() {
   try {
     const response = await fetch("http://localhost:5000/api/students");
@@ -230,18 +231,6 @@ async function loadStudents() {
       throw new Error("Failed to fetch students");
     }
 
-    const students = await response.json();
-
-    console.log("Students from backend:", students);
-  } catch (error) {
-    console.error("Backend connection error:", error);
-  }
-}
-
-loadStudents();
-async function loadStudents() {
-  try {
-    const response = await fetch("http://localhost:5000/api/students");
     const students = await response.json();
 
     const container = document.getElementById("students");
@@ -261,3 +250,6 @@ async function loadStudents() {
     console.error("Backend connection error:", error);
   }
 }
+
+loadStudents();
+ 

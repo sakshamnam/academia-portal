@@ -1,8 +1,9 @@
-
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 let students = [
@@ -22,10 +23,12 @@ let students = [
   }
 ];
 
+// GET all students
 app.get("/api/students", (req, res) => {
   res.json(students);
 });
 
+// GET single student
 app.get("/api/students/:id", (req, res) => {
   const id = Number(req.params.id);
 
@@ -40,6 +43,7 @@ app.get("/api/students/:id", (req, res) => {
   res.json(student);
 });
 
+// POST new student
 app.post("/api/students", (req, res) => {
   const { name, branch, skills, year } = req.body;
 
@@ -61,6 +65,8 @@ app.post("/api/students", (req, res) => {
 
   res.status(201).json(newStudent);
 });
+
+// PUT update student
 app.put("/api/students/:id", (req, res) => {
   const id = Number(req.params.id);
 
@@ -81,6 +87,28 @@ app.put("/api/students/:id", (req, res) => {
 
   res.json(student);
 });
+
+// DELETE student
+app.delete("/api/students/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  const index = students.findIndex((student) => student.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({
+      message: "Student not found"
+    });
+  }
+
+  const deletedStudent = students.splice(index, 1)[0];
+
+  res.json({
+    message: "Student deleted successfully",
+    student: deletedStudent
+  });
+});
+
+// Test route
 app.get("/", (req, res) => {
   res.send("Academia Portal Backend is Running!");
 });
