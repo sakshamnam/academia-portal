@@ -403,8 +403,7 @@
 
         // Get registered users from localStorage
 
-        const users =
-            JSON.parse(localStorage.getItem("users")) || [];
+        const users = [{email:"student@gmail.com",password:"1234",role:"student"},{email:"company@gmail.com",password:"1234",role:"company"},{email:"admin@gmail.com",password:"1234",role:"admin"}, ...(JSON.parse(localStorage.getItem("users")) || [])];
 
 
         // Find matching user
