@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jobs & Internships - AcademiaConnect</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 240px;
+            height: 100vh;
+            background: #111827;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin: 8px 0;
+        }
+
+        .menu a {
+            display: block;
+            padding: 13px 15px;
+            border-radius: 8px;
+            color: #d1d5db;
+            text-decoration: none;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 240px;
+            padding: 25px;
+        }
+
+        .topbar {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .topbar h2 {
+            margin-bottom: 6px;
+        }
+
+        .topbar p {
+            color: #6b7280;
+        }
+
+        /* SEARCH */
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 12px;
+        }
+
+        input,
+        select {
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #2563eb;
+        }
+
+        .search-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* HEADER */
+        .jobs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .jobs-header p {
+            color: #6b7280;
+        }
+
+        /* JOB CARDS */
+        .jobs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .job-card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .job-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .job-card h3 {
+            margin-bottom: 7px;
+        }
+
+        .company {
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .match {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 7px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .job-info {
+            margin: 15px 0;
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        .description {
+            color: #4b5563;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .tags {
+            margin-bottom: 18px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: #2563eb;
+            padding: 6px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin: 4px 4px 0 0;
+        }
+
+        .apply-btn {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .apply-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .apply-btn.applied {
+            background: #16a34a;
+            cursor: default;
+        }
+
+        .no-results {
+            display: none;
+            background: white;
+            padding: 35px;
+            text-align: center;
+            border-radius: 12px;
+            color: #6b7280;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1000px) {
+            .search-box {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .jobs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .search-box {
+                grid-template-columns: 1fr;
+            }
+
+            .jobs-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+            Academia<span>Connect</span>
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="student.html">
+                    📊 Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="student.html">
+                    🛠️ My Skills
+                </a>
+            </li>
+
+            <li>
+                <a href="jobs.html" class="active">
+                    💼 Internships & Jobs
+                </a>
+            </li>
+
+            <li>
+                <a href="student.html">
+                    📄 Applications
+                </a>
+            </li>
+
+            <li>
+                <a href="student.html">
+                    👤 My Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="login.html">
+                    🚪 Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <h2>Internships & Jobs</h2>
+
+            <p>
+                Find opportunities based on your skills
+            </p>
+
+        </div>
+
+
+        <!-- SEARCH & FILTER -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search jobs, companies or skills..."
+            >
+
+            <select id="typeFilter">
+
+                <option value="all">
+                    All Types
+                </option>
+
+                <option value="internship">
+                    Internship
+                </option>
+
+                <option value="fulltime">
+                    Full Time
+                </option>
+
+            </select>
+
+
+            <select id="locationFilter">
+
+                <option value="all">
+                    All Locations
+                </option>
+
+                <option value="remote">
+                    Remote
+                </option>
+
+                <option value="delhi">
+                    Delhi
+                </option>
+
+                <option value="bangalore">
+                    Bangalore
+                </option>
+
+            </select>
+
+
+            <button
+                class="search-btn"
+                onclick="filterJobs()"
+            >
+                Search
+            </button>
+
+        </div>
+
+
+        <!-- JOB HEADER -->
+
+        <div class="jobs-header">
+
+            <div>
+
+                <h2>
+                    Recommended Opportunities
+                </h2>
+
+                <p>
+                    Opportunities matched with your skills
+                </p>
+
+            </div>
+
+            <strong id="jobCount">
+                6 Opportunities
+            </strong>
+
+        </div>
+
+
+        <!-- JOBS -->
+
+        <div class="jobs" id="jobs">
+
+
+            <!-- JOB 1 -->
+
+            <div
+                class="job-card"
+                data-type="internship"
+                data-location="remote"
+                data-search="web development abc technologies html css javascript react"
+            >
+
+                <div class="job-top">
+
+                    <div>
+
+                        <h3>
+                            Web Development Intern
+                        </h3>
+
+                        <p class="company">
+                            ABC Technologies
+                        </p>
+
+                    </div>
+
+                    <span class="match">
+                        85% Match
+                    </span>
+
+                </div>
+
+
+                <div class="job-info">
+
+                    📍 Remote &nbsp; | &nbsp;
+                    ⏳ 3 Months &nbsp; | &nbsp;
+                    💰 ₹10,000/month
+
+                </div>
+
+
+                <p class="description">
+
+                    Work on modern web applications and
+                    collaborate with experienced developers.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">React</span>
+
+                </div>
+
+
+                <button
+                    class="apply-btn"
+                    onclick="applyJob(this)"
+                >
+                    Apply Now
+                </button>
+
+            </div>
+
+
+
+            <!-- JOB 2 -->
+
+            <div
+                class="job-card"
+                data-type="internship"
+                data-location="delhi"
+                data-search="software developer technova c++ sql git"
+            >
+
+                <div class="job-top">
+
+                    <div>
+
+                        <h3>
+                            Software Developer Intern
+                        </h3>
+
+                        <p class="company">
+                            TechNova Solutions
+                        </p>
+
+                    </div>
+
+                    <span class="match">
+                        80% Match
+                    </span>
+
+                </div>
+
+
+                <div class="job-info">
+
+                    📍 Delhi &nbsp; | &nbsp;
+                    ⏳ 6 Months &nbsp; | &nbsp;
+                    💰 ₹15,000/month
+
+                </div>
+
+
+                <p class="description">
+
+                    Develop software solutions and work
+                    with a professional engineering team.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">C++</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Git</span>
+
+                </div>
+
+
+                <button
+                    class="apply-btn"
+                    onclick="applyJob(this)"
+                >
+                    Apply Now
+                </button>
+
+            </div>
+
+
+
+            <!-- JOB 3 -->
+
+            <div
+                class="job-card"
+                data-type="internship"
+                data-location="bangalore"
+                data-search="data analyst dataworks python sql"
+            >
+
+                <div class="job-top">
+
+                    <div>
+
+                        <h3>
+                            Data Analyst Intern
+                        </h3>
+
+                        <p class="company">
+                            DataWorks India
+                        </p>
+
+                    </div>
+
+                    <span class="match">
+                        75% Match
+                    </span>
+
+                </div>
+
+
+                <div class="job-info">
+
+                    📍 Bangalore &nbsp; | &nbsp;
+                    ⏳ 3 Months &nbsp; | &nbsp;
+                    💰 ₹12,000/month
+
+                </div>
+
+
+                <p class="description">
+
+                    Analyze datasets and create meaningful
+                    insights for business decisions.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Excel</span>
+
+                </div>
+
+
+                <button
+                    class="apply-btn"
+                    onclick="applyJob(this)"
+                >
+                    Apply Now
+                </button>
+
+            </div>
+
+
+
+            <!-- JOB 4 -->
+
+            <div
+                class="job-card"
+                data-type="fulltime"
+                data-location="remote"
+                data-search="frontend developer web react javascript"
+            >
+
+                <div class="job-top">
+
+                    <div>
+
+                        <h3>
+                            Frontend Developer
+                        </h3>
+
+                        <p class="company">
+                            InnovateTech
+                        </p>
+
+                    </div>
+
+                    <span class="match">
+                        72% Match
+                    </span>
+
+                </div>
+
+
+                <div class="job-info">
+
+                    📍 Remote &nbsp; | &nbsp;
+                    💼 Full Time &nbsp; | &nbsp;
+                    💰 ₹5 LPA
+
+                </div>
+
+
+                <p class="description">
+
+                    Build responsive user interfaces and
+                    improve web application experiences.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">React</span>
+                    <span class="tag">JavaScript</span>
+
+                </div>
+
+
+                <button
+                    class="apply-btn"
+                    onclick="applyJob(this)"
+                >
+                    Apply Now
+                </button>
+
+            </div>
+
+
+
+            <!-- JOB 5 -->
+
+            <div
+                class="job-card"
+                data-type="internship"
+                data-location="remote"
+                data-search="python ai machine learning artificial intelligence"
+            >
+
+                <div class="job-top">
+
+                    <div>
+
+                        <h3>
+                            AI / ML Intern
+                        </h3>
+
+                        <p class="company">
+                            AI Solutions
+                        </p>
+
+                    </div>
+
+                    <span class="match">
+                        68% Match
+                    </span>
+
+                </div>
+
+
+                <div class="job-info">
+
+                    📍 Remote &nbsp; | &nbsp;
+                    ⏳ 4 Months &nbsp; | &nbsp;
+                    💰 ₹14,000/month
+
+                </div>
+
+
+                <p class="description">
+
+                    Learn and work on practical artificial
+                    intelligence and machine learning projects.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">Python</span>
+                    <span class="tag">AI</span>
+                    <span class="tag">ML</span>
+
+                </div>
+
+
+                <button
+                    class="apply-btn"
+                    onclick="applyJob(this)"
+                >
+                    Apply Now
+                </button>
+
+            </div>
+
+
+
+            <!-- JOB 6 -->
+
+            <div
+                class="job-card"
+                data-type="internship"
+                data-location="delhi"
+                data-search="backend node js javascript mongodb"
+            >
+
+                <div class="job-top">
+
+                    <div>
+
+                        <h3>
+                            Backend Developer Intern
+                        </h3>
+
+                        <p class="company">
+                            CodeCraft
+                        </p>
+
+                    </div>
+
+                    <span class="match">
+                        65% Match
+                    </span>
+
+                </div>
+
+
+                <div class="job-info">
+
+                    📍 Delhi &nbsp; | &nbsp;
+                    ⏳ 3 Months &nbsp; | &nbsp;
+                    💰 ₹11,000/month
+
+                </div>
+
+
+                <p class="description">
+
+                    Develop APIs and backend services for
+                    scalable web applications.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">Node.js</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">MongoDB</span>
+
+                </div>
+
+
+                <button
+                    class="apply-btn"
+                    onclick="applyJob(this)"
+                >
+                    Apply Now
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- NO RESULTS -->
+
+        <div
+            class="no-results"
+            id="noResults"
+        >
+            <h3>No opportunities found 😕</h3>
+
+            <p>
+                Try changing your search or filters.
+            </p>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // APPLY JOB
+
+        function applyJob(button) {
+
+            button.innerText = "Applied ✓";
+
+            button.classList.add("applied");
+
+            button.disabled = true;
+
+            alert(
+                "Application submitted successfully!"
+            );
+
+        }
+
+
+        // FILTER JOBS
+
+        function filterJobs() {
+
+            const search =
+                document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+            const type =
+                document
+                .getElementById("typeFilter")
+                .value;
+
+            const location =
+                document
+                .getElementById("locationFilter")
+                .value;
+
+
+            const cards =
+                document.querySelectorAll(".job-card");
+
+
+            let visible = 0;
+
+
+            cards.forEach(function(card) {
+
+                const cardSearch =
+                    card
+                    .getAttribute("data-search")
+                    .toLowerCase();
+
+                const cardType =
+                    card.getAttribute("data-type");
+
+                const cardLocation =
+                    card.getAttribute("data-location");
+
+
+                const searchMatch =
+                    cardSearch.includes(search);
+
+                const typeMatch =
+                    type === "all" ||
+                    cardType === type;
+
+                const locationMatch =
+                    location === "all" ||
+                    cardLocation === location;
+
+
+                if (
+                    searchMatch &&
+                    typeMatch &&
+                    locationMatch
+                ) {
+
+                    card.style.display = "block";
+
+                    visible++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            document.getElementById("jobCount")
+                .innerText =
+                visible + " Opportunities";
+
+
+            document.getElementById
+            <script src="script.js"></script>
+</body>
+</html>

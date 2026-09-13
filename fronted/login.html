@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | AcademiaConnect</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef4ff, #f8fafc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 900px;
+            max-width: 92%;
+            min-height: 560px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        /* LEFT SIDE */
+
+        .left {
+            width: 48%;
+            background: #2563eb;
+            color: white;
+            padding: 55px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 45px;
+        }
+
+        .left h1 {
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .left p {
+            font-size: 16px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .features p {
+            margin: 13px 0;
+        }
+
+        /* RIGHT SIDE */
+
+        .right {
+            width: 52%;
+            padding: 55px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right h2 {
+            font-size: 30px;
+            margin-bottom: 8px;
+            color: #172033;
+        }
+
+        .subtitle {
+            color: #667085;
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #344054;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            outline: none;
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #2563eb;
+        }
+
+        .login-btn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 25px;
+            color: #667085;
+            font-size: 14px;
+        }
+
+        .register a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .back a {
+            color: #667085;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .demo-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e4e7ec;
+            font-size: 12px;
+            color: #667085;
+        }
+
+        .demo-box strong {
+            color: #344054;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .container {
+                flex-direction: column;
+            }
+
+            .left {
+                width: 100%;
+                padding: 30px;
+            }
+
+            .left h1 {
+                font-size: 28px;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            .features {
+                display: none;
+            }
+
+            .right {
+                width: 100%;
+                padding: 35px 30px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="left">
+
+            <div class="logo">
+                AcademiaConnect
+            </div>
+
+            <h1>
+                Welcome Back! 👋
+            </h1>
+
+            <p>
+                Connect your skills with the right
+                internships, jobs and industry opportunities.
+            </p>
+
+            <div class="features">
+
+                <p>✓ Skill Mapping</p>
+
+                <p>✓ Skill Gap Analysis</p>
+
+                <p>✓ Internship Recommendations</p>
+
+                <p>✓ Industry Connections</p>
+
+                <p>✓ Placement Analytics</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="right">
+
+            <h2>
+                Login
+            </h2>
+
+            <p class="subtitle">
+                Login to your AcademiaConnect account
+            </p>
+
+
+            <form id="loginForm">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <label for="role">
+                    Login As
+                </label>
+
+                <select id="role" required>
+
+                    <option value="">
+                        Select your role
+                    </option>
+
+                    <option value="student">
+                        👨‍🎓 Student
+                    </option>
+
+                    <option value="company">
+                        🏢 Company
+                    </option>
+
+                    <option value="admin">
+                        🏫 College / Admin
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <div class="register">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create Account
+                </a>
+
+            </div>
+
+
+            <div class="back">
+
+                <a href="index.html">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+
+            <!-- DEMO LOGIN DETAILS -->
+
+            <div class="demo-box">
+
+                <strong>Hackathon Demo Accounts</strong>
+                <br><br>
+
+                Student:
+                student@gmail.com / 1234
+
+                <br>
+
+                Company:
+                company@gmail.com / 1234
+
+                <br>
+
+                Admin:
+                admin@gmail.com / 1234
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+   <script>
+
+    const loginForm = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+
+
+    loginForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        // Get login details
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const role =
+            document.getElementById("role").value;
+
+
+        // Get registered users from localStorage
+
+        const users =
+            JSON.parse(localStorage.getItem("users")) || [];
+
+
+        // Find matching user
+
+        const user = users.find(function(u) {
+
+            return (
+                u.email.toLowerCase() === email.toLowerCase() &&
+                u.password === password &&
+                u.role === role
+            );
+
+        });
+
+
+        // ==========================
+        // LOGIN SUCCESS
+        // ==========================
+
+        if (user) {
+
+            // Save logged-in user
+
+            localStorage.setItem(
+                "loggedInUser",
+                JSON.stringify(user)
+            );
+
+
+            message.style.color = "green";
+
+            message.innerHTML =
+                "✓ Login successful! Opening Dashboard...";
+
+
+            // Open correct dashboard
+
+            setTimeout(function() {
+
+                if (role === "student") {
+
+                    window.location.href = "student.html";
+
+                }
+
+                else if (role === "company") {
+
+                    window.location.href = "company.html";
+
+                }
+
+                else if (role === "admin") {
+
+                    window.location.href = "admin.html";
+
+                }
+
+            }, 800);
+
+        }
+
+
+        // ==========================
+        // LOGIN FAILED
+        // ==========================
+
+        else {
+
+            message.style.color = "red";
+
+            message.innerHTML =
+                "✗ Invalid email, password or role.";
+
+        }
+
+    });
+
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
+<script src="script.js"></script>
+</body>
+</html>

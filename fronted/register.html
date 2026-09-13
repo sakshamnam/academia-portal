@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | AcademiaConnect</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef4ff, #f8fafc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 15px;
+        }
+
+        .container {
+            width: 950px;
+            max-width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        /* LEFT */
+
+        .left {
+            width: 40%;
+            background: #2563eb;
+            color: white;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 45px;
+        }
+
+        .left h1 {
+            font-size: 34px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .left > p {
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .benefits {
+            margin-top: 30px;
+        }
+
+        .benefits p {
+            margin: 14px 0;
+            font-size: 14px;
+        }
+
+        /* RIGHT */
+
+        .right {
+            width: 60%;
+            padding: 45px 50px;
+        }
+
+        .right h2 {
+            font-size: 30px;
+            color: #172033;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #667085;
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            color: #344054;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .skills-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .skill-option {
+            border: 1px solid #d0d5dd;
+            border-radius: 20px;
+            padding: 7px 12px;
+            cursor: pointer;
+            font-size: 13px;
+            background: white;
+            user-select: none;
+        }
+
+        .skill-option:hover {
+            border-color: #2563eb;
+        }
+
+        .skill-option.selected {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .skill-help {
+            font-size: 12px;
+            color: #667085;
+            margin-top: 7px;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 14px;
+            background: #2563eb;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .register-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .login {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #667085;
+        }
+
+        .login a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #667085;
+            font-size: 13px;
+        }
+
+        /* HIDE EXTRA FIELDS */
+
+        #companyFields,
+        #adminFields {
+            display: none;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            .container {
+                flex-direction: column;
+            }
+
+            .left,
+            .right {
+                width: 100%;
+            }
+
+            .left {
+                padding: 30px;
+            }
+
+            .left h1 {
+                font-size: 28px;
+            }
+
+            .benefits {
+                display: none;
+            }
+
+            .right {
+                padding: 35px 25px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="left">
+
+            <div class="logo">
+                AcademiaConnect
+            </div>
+
+            <h1>
+                Start Your Journey 🚀
+            </h1>
+
+            <p>
+                Create your profile and connect with
+                colleges, companies and career opportunities.
+            </p>
+
+            <div class="benefits">
+
+                <p>✓ Build your skill profile</p>
+
+                <p>✓ Discover internships</p>
+
+                <p>✓ Find suitable jobs</p>
+
+                <p>✓ Identify skill gaps</p>
+
+                <p>✓ Connect with industry</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="right">
+
+            <h2>
+                Create Account
+            </h2>
+
+            <p class="subtitle">
+                Register on AcademiaConnect
+            </p>
+
+
+            <form id="registerForm">
+
+
+                <!-- ROLE -->
+
+                <div class="form-group">
+
+                    <label for="role">
+                        Register As
+                    </label>
+
+                    <select id="role" required>
+
+                        <option value="">
+                            Select your role
+                        </option>
+
+                        <option value="student">
+                            👨‍🎓 Student
+                        </option>
+
+                        <option value="company">
+                            🏢 Company
+                        </option>
+
+                        <option value="admin">
+                            🏫 College / Admin
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BASIC INFORMATION -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Create password"
+                            required
+                            minlength="4"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm password"
+                            required
+                            minlength="4"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- STUDENT FIELDS -->
+
+                <div id="studentFields">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="college">
+                                College
+                            </label>
+
+                            <input
+                                type="text"
+                                id="college"
+                                placeholder="College name"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="branch">
+                                Branch
+                            </label>
+
+                            <select id="branch">
+
+                                <option value="">
+                                    Select branch
+                                </option>
+
+                                <option>
+                                    CSE
+                                </option>
+
+                                <option>
+                                    IT
+                                </option>
+
+                                <option>
+                                    ECE
+                                </option>
+
+                                <option>
+                                    Mechanical
+                                </option>
+
+                                <option>
+                                    Civil
+                                </option>
+
+                                <option>
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="year">
+                            Year
+                        </label>
+
+                        <select id="year">
+
+                            <option value="">
+                                Select year
+                            </option>
+
+                            <option>
+                                1st Year
+                            </option>
+
+                            <option>
+                                2nd Year
+                            </option>
+
+                            <option>
+                                3rd Year
+                            </option>
+
+                            <option>
+                                4th Year
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- SKILLS -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Select Your Skills
+                        </label>
+
+                        <div class="skills-box">
+
+                            <div class="skill-option">
+                                C++
+                            </div>
+
+                            <div class="skill-option">
+                                Python
+                            </div>
+
+                            <div class="skill-option">
+                                Java
+                            </div>
+
+                            <div class="skill-option">
+                                HTML
+                            </div>
+
+                            <div class="skill-option">
+                                CSS
+                            </div>
+
+                            <div class="skill-option">
+                                JavaScript
+                            </div>
+
+                            <div class="skill-option">
+                                React
+                            </div>
+
+                            <div class="skill-option">
+                                SQL
+                            </div>
+
+                            <div class="skill-option">
+                                Git
+                            </div>
+
+                        </div>
+
+                        <p class="skill-help">
+                            Click on skills to select them.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMPANY FIELDS -->
+
+                <div id="companyFields">
+
+                    <div class="form-group">
+
+                        <label for="companyName">
+                            Company Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="companyName"
+                            placeholder="Enter company name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="companyType">
+                            Industry
+                        </label>
+
+                        <select id="companyType">
+
+                            <option value="">
+                                Select industry
+                            </option>
+
+                            <option>
+                                Information Technology
+                            </option>
+
+                            <option>
+                                Finance
+                            </option>
+
+                            <option>
+                                Healthcare
+                            </option>
+
+                            <option>
+                                Education
+                            </option>
+
+                            <option>
+                                Manufacturing
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADMIN FIELDS -->
+
+                <div id="adminFields">
+
+                    <div class="form-group">
+
+                        <label for="collegeName">
+                            College / Institution Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="collegeName"
+                            placeholder="Enter institution name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="designation">
+                            Designation
+                        </label>
+
+                        <input
+                            type="text"
+                            id="designation"
+                            placeholder="e.g. Placement Officer"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="register-btn"
+                >
+                    Create Account
+                </button>
+
+
+            </form>
+
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <div class="login">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </div>
+
+
+            <div class="back">
+
+                <a href="index.html">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+    const role = document.getElementById("role");
+
+    const studentFields = document.getElementById("studentFields");
+    const companyFields = document.getElementById("companyFields");
+    const adminFields = document.getElementById("adminFields");
+
+    const form = document.getElementById("registerForm");
+    const message = document.getElementById("message");
+
+    // ==============================
+    // ROLE CHANGE
+    // ==============================
+
+    role.addEventListener("change", function () {
+
+        studentFields.style.display = "none";
+        companyFields.style.display = "none";
+        adminFields.style.display = "none";
+
+        if (this.value === "student") {
+            studentFields.style.display = "block";
+        }
+
+        else if (this.value === "company") {
+            companyFields.style.display = "block";
+        }
+
+        else if (this.value === "admin") {
+            adminFields.style.display = "block";
+        }
+
+    });
+
+
+    // ==============================
+    // SKILL SELECTION
+    // ==============================
+
+    const skills = document.querySelectorAll(".skill-option");
+
+    skills.forEach(function (skill) {
+
+        skill.addEventListener("click", function () {
+
+            this.classList.toggle("selected");
+
+        });
+
+    });
+
+
+    // ==============================
+    // REGISTRATION
+    // ==============================
+
+    form.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const selectedRole = role.value;
+
+        const name = document.getElementById("name").value.trim();
+
+        const email = document.getElementById("email").value.trim();
+
+        const password = document.getElementById("password").value;
+
+        const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+
+        // Role check
+
+        if (selectedRole === "") {
+
+            message.style.color = "red";
+
+            message.innerHTML =
+                "✗ Please select your role.";
+
+            return;
+        }
+
+
+        // Password check
+
+        if (password !== confirmPassword) {
+
+            message.style.color = "red";
+
+            message.innerHTML =
+                "✗ Passwords do not match.";
+
+            return;
+        }
+
+
+        // ==============================
+        // CREATE USER OBJECT
+        // ==============================
+
+        let user = {
+
+            name: name,
+
+            email: email,
+
+            password: password,
+
+            role: selectedRole,
+
+            skills: []
+
+        };
+
+
+        // ==============================
+        // STUDENT DATA
+        // ==============================
+
+        if (selectedRole === "student") {
+
+            user.college =
+                document.getElementById("college").value;
+
+            user.branch =
+                document.getElementById("branch").value;
+
+            user.year =
+                document.getElementById("year").value;
+
+
+            // Get selected skills
+
+            document
+                .querySelectorAll(".skill-option.selected")
+                .forEach(function (skill) {
+
+                    user.skills.push(
+                        skill.textContent.trim()
+                    );
+
+                });
+
+        }
+
+
+        // ==============================
+        // COMPANY DATA
+        // ==============================
+
+        if (selectedRole === "company") {
+
+            user.companyName =
+                document.getElementById("companyName").value;
+
+            user.industry =
+                document.getElementById("companyType").value;
+
+        }
+
+
+        // ==============================
+        // ADMIN DATA
+        // ==============================
+
+        if (selectedRole === "admin") {
+
+            user.collegeName =
+                document.getElementById("collegeName").value;
+
+            user.designation =
+                document.getElementById("designation").value;
+
+        }
+
+
+        // ==============================
+        // GET OLD USERS
+        // ==============================
+
+        let users =
+            JSON.parse(localStorage.getItem("users")) || [];
+
+
+        // ==============================
+        // CHECK DUPLICATE EMAIL
+        // ==============================
+
+        const existingUser = users.find(function (u) {
+
+            return u.email.toLowerCase() === email.toLowerCase();
+
+        });
+
+
+        if (existingUser) {
+
+            message.style.color = "red";
+
+            message.innerHTML =
+                "✗ This email is already registered.";
+
+            return;
+
+        }
+
+
+        // ==============================
+        // SAVE USER
+        // ==============================
+
+        users.push(user);
+
+        localStorage.setItem(
+            "users",
+            JSON.stringify(users)
+        );
+
+
+        // ==============================
+        // SUCCESS
+        // ==============================
+
+        message.style.color = "green";
+
+        message.innerHTML =
+            "✓ Account created successfully! Redirecting to login...";
+
+
+        setTimeout(function () {
+
+            window.location.href = "login.html";
+
+        }, 1200);
+
+    });
+
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
+<script src="script.js"></script>
+</body>
+</html>
