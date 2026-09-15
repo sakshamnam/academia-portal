@@ -262,6 +262,16 @@ body {
     background: #2563eb;
 }
 
+
+/* ================= SKILL GAP VARIABLE BARS ================= */
+.skill-gap-fill {
+    height: 100%;
+    background: #2563eb;
+    border-radius: 10px;
+    display: block;
+    min-width: 4px;
+}
+
 /* ================= INTERNSHIPS ================= */
 
 .internship {
@@ -2214,50 +2224,40 @@ function updateSkillGap() {
         return;
 
     }
-
+    // Individual gap levels for clearer, non-identical skill-gap analysis.
+    const gapPriority = {
+        "C++": 55,
+        "Python": 45,
+        "Java": 70,
+        "HTML": 35,
+        "CSS": 60,
+        "JavaScript": 40,
+        "React": 85,
+        "SQL": 80,
+        "Git": 65,
+        "Node.js": 90
+    };
 
     missing
         .slice(0, 5)
         .forEach(skill => {
+            const gap = gapPriority[skill] || 60;
 
-            const div =
-                document.createElement(
-                    "div"
-                );
-
-
-            div.className =
-                "progress-item";
-
+            const div = document.createElement("div");
+            div.className = "progress-item";
 
             div.innerHTML = `
-
                 <div class="progress-header">
-
-                    <span>
-                        ${skill}
-                    </span>
-
-                    <span>
-                        Recommended
-                    </span>
-
+                    <span>${skill}</span>
+                    <span>Gap: ${gap}%</span>
                 </div>
 
                 <div class="progress">
-
-                    <div
-                        style="width:15%;"
-                    >
-                    </div>
-
+                    <div class="skill-gap-fill" style="width:${gap}% !important;"></div>
                 </div>
-
             `;
 
-
             container.appendChild(div);
-
         });
 
 }
