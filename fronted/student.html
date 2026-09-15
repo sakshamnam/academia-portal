@@ -449,6 +449,422 @@ th {
         overflow-x: auto;
     }
 }
+/* =========================
+   SKILL ASSESSMENT
+   ========================= */
+
+.assessment-banner {
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    color: white;
+    padding: 22px 24px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.18);
+}
+
+.assessment-banner h2 {
+    margin: 0 0 6px;
+    color: white;
+}
+
+.assessment-banner p {
+    margin: 0;
+    color: rgba(255,255,255,0.9);
+    font-size: 14px;
+}
+
+.assessment-btn {
+    border: none;
+    background: white;
+    color: #2563eb;
+    padding: 11px 18px;
+    border-radius: 9px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.assessment-btn:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+    .assessment-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+/* =========================
+   ASSESSMENT MODAL
+   ========================= */
+
+.assessment-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.75);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.assessment-box {
+    background: #ffffff;
+    width: 100%;
+    max-width: 680px;
+    border-radius: 18px;
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    animation: assessmentPop 0.25s ease;
+}
+
+@keyframes assessmentPop {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.assessment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.assessment-header span {
+    display: block;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.assessment-header h2 {
+    margin: 0;
+    color: #172033;
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+.close-btn {
+    border: none;
+    background: #f1f5f9;
+    color: #475569;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.close-btn:hover {
+    background: #e2e8f0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 25px 0;
+}
+
+#assessmentProgressBar {
+    height: 100%;
+    width: 12.5%;
+    background: #2563eb;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+#assessmentOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.assessment-option {
+    width: 100%;
+    padding: 15px 18px;
+    border: 2px solid #e2e8f0;
+    background: #ffffff;
+    color: #172033;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.assessment-option:hover {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.assessment-option.selected {
+    border-color: #2563eb;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-weight: 700;
+}
+
+.assessment-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.assessment-footer .assessment-btn {
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.assessment-footer .assessment-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 700px) {
+
+    .assessment-box {
+        padding: 22px;
+    }
+
+    .assessment-header h2 {
+        font-size: 18px;
+    }
+
+    .assessment-option {
+        padding: 13px;
+    }
+}
+.assessment-result-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.assessment-result-box {
+    width: 100%;
+    max-width: 520px;
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 25px 80px rgba(0,0,0,.3);
+}
+
+.result-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.assessment-result-box h2 {
+    margin: 0;
+    font-size: 26px;
+    color: #172033;
+}
+
+.result-subtitle {
+    color: #64748b;
+    margin: 8px 0 25px;
+}
+
+.result-score {
+    background: #eff6ff;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.result-score strong {
+    display: block;
+    font-size: 42px;
+    color: #2563eb;
+}
+
+.result-score span {
+    color: #64748b;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.result-card {
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.result-card strong {
+    display: block;
+    font-size: 22px;
+    color: #2563eb;
+}
+
+.result-card span {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.detected-skills {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+}
+
+.detected-skills h3 {
+    margin: 0 0 8px;
+}
+
+.detected-skills p {
+    margin: 0;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.result-close-btn {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.result-close-btn:hover {
+    background: #1d4ed8;
+}
+/* =========================
+   LEARNING RECOMMENDATIONS
+   ========================= */
+
+.learning-card {
+    margin-top: 20px;
+}
+
+.learning-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.learning-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.learning-item:last-child {
+    border-bottom: none;
+}
+
+.learning-icon {
+    width: 45px;
+    height: 45px;
+    background: #eff6ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.learning-content {
+    flex: 1;
+}
+
+.learning-content h3 {
+    margin: 0 0 5px;
+    font-size: 15px;
+    color: #172033;
+}
+
+.learning-content p {
+    margin: 0 0 5px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.learning-content span {
+    font-size: 12px;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.learn-btn {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.learn-btn:hover {
+    background: #1d4ed8;
+}
+
+@media (max-width: 700px) {
+    .learning-item {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .learn-btn {
+        margin-left: 60px;
+    }
+}
+
+/* ================= APPLICATION TRACKING ================= */
+.application-track{display:flex;align-items:center;gap:6px;min-width:260px}.application-status{border:1px solid #d1d5db;border-radius:8px;padding:7px 10px;background:#fff;font-weight:600;font-size:13px;cursor:pointer}.track-btn{border:0;border-radius:8px;padding:7px 10px;background:#111827;color:#fff;cursor:pointer;font-weight:600}.tracking-modal{position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;z-index:9999}.tracking-box{background:#fff;width:min(560px,92vw);border-radius:18px;padding:26px;box-shadow:0 20px 60px rgba(0,0,0,.2)}.tracking-subtitle{color:#64748b;margin-bottom:22px}.tracking-steps{display:grid;gap:12px;margin:18px 0}.tracking-step{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:#f8fafc}.tracking-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#e2e8f0;font-size:13px;font-weight:700}.tracking-step.active .tracking-dot{background:#16a34a;color:#fff}.tracking-step.active{background:#f0fdf4}.tracking-close{margin-top:12px;width:100%;padding:11px;border:0;border-radius:10px;background:#e5e7eb;cursor:pointer;font-weight:700}
 
 </style>
 </head>
@@ -620,7 +1036,17 @@ th {
 
 
             <!-- MY SKILLS -->
+<!-- SKILL ASSESSMENT BANNER -->
+<div class="assessment-banner">
+    <div>
+        <h2>🎯 Skill Assessment</h2>
+        <p>Test your technical skills and get personalized career recommendations.</p>
+    </div>
 
+    <button class="assessment-btn" onclick="openAssessment()">
+        Take Assessment →
+    </button>
+</div>
             <div class="card" id="skills">
 
                 <h2>
@@ -727,7 +1153,55 @@ th {
                 class="card"
                 id="internships"
             >
+<!-- RECOMMENDED LEARNING -->
+<div class="card learning-card">
 
+    <div class="card-header">
+        <h2>📚 Recommended Learning</h2>
+        <span class="badge">Based on your skill gaps</span>
+    </div>
+
+    <div class="learning-item">
+        <div class="learning-icon">🎨</div>
+        <div class="learning-content">
+            <h3>CSS & Responsive Web Design</h3>
+            <p>Build modern and responsive websites.</p>
+            <span>Beginner → Intermediate • 4 Weeks</span>
+        </div>
+        <button class="learn-btn" onclick="startLearning(this)">Start Learning</button>
+    </div>
+
+    <div class="learning-item">
+        <div class="learning-icon">⚛️</div>
+        <div class="learning-content">
+            <h3>React.js Development</h3>
+            <p>Learn component-based frontend development.</p>
+            <span>Intermediate • 6 Weeks</span>
+        </div>
+        <button class="learn-btn" onclick="startLearning(this)">Start Learning</button>
+    </div>
+
+    <div class="learning-item">
+        <div class="learning-icon">🗄️</div>
+        <div class="learning-content">
+            <h3>SQL & Database Fundamentals</h3>
+            <p>Master databases and data querying.</p>
+            <span>Beginner • 3 Weeks</span>
+        </div>
+        <button class="learn-btn" onclick="startLearning(this)">Start Learning</button>
+    </div>
+
+    <div class="learning-item">
+        <div class="learning-icon">🚀</div>
+        <div class="learning-content">
+            <h3>Node.js Backend Development</h3>
+            <p>Build APIs and backend applications.</p>
+            <span>Intermediate • 5 Weeks</span>
+        </div>
+        <button class="learn-btn" onclick="startLearning(this)">Start Learning</button>
+    </div>
+
+</div>
                 <h2>
                     💼 Recommended Internships
                 </h2>
@@ -1192,7 +1666,7 @@ async function loadStudent() {
 
         const response =
             await fetch(
-                "https://academia-portal-taa8.onrender.com/api/students/1"
+                "http://localhost:5000/api/students/1"
             );
 
         if (!response.ok) {
@@ -1357,7 +1831,7 @@ async function saveSkills() {
 
         const response =
             await fetch(
-                "https://academia-portal-taa8.onrender.com/api/students/1",
+                "http://localhost:5000/api/students/1",
                 {
 
                     method: "PUT",
@@ -1852,75 +2326,70 @@ function apply(button) {
         "✓ Application submitted successfully!"
     );
 
+    // Open the application tracker immediately after applying
+    setTimeout(() => {
+        const rows = document.querySelectorAll("#applicationTable tr");
+        const row = [...rows].find(r =>
+            r.dataset.position === position &&
+            r.dataset.company === company
+        );
+        if (row) {
+            const trackButton = row.querySelector(".track-btn");
+            if (trackButton) viewApplicationTracking(trackButton);
+        }
+    }, 250);
+
 }
 
 
 /* ================= ADD APPLICATION ================= */
 
-function addApplication(
-    position,
-    company,
-    match
-) {
-
-    const table =
-        document.getElementById(
-            "applicationTable"
-        );
-
-
-    const empty =
-        document.getElementById(
-            "emptyApplication"
-        );
-
-
-    if (empty) {
-
-        empty.remove();
-
-    }
-
-
-    const row =
-        document.createElement(
-            "tr"
-        );
-
-
+function addApplication(position, company, match) {
+    const table = document.getElementById("applicationTable");
+    const empty = document.getElementById("emptyApplication");
+    if (empty) empty.remove();
+    const row = document.createElement("tr");
+    row.dataset.position = position;
+    row.dataset.company = company;
+    row.dataset.match = String(match || "0").replace("%", "");
+    row.dataset.status = "Applied";
     row.innerHTML = `
-
-        <td>
-            ${position}
-        </td>
-
-        <td>
-            ${company}
-        </td>
-
-        <td>
-            <span class="status">
-                Applied
-            </span>
-        </td>
-
-    `;
-
-
+        <td>${position}</td>
+        <td>${company}</td>
+        <td><div class="application-track">
+            <select class="application-status" onchange="updateApplicationStatus(this)">
+                <option>Applied</option><option>Under Review</option><option>Shortlisted</option><option>Interview</option><option>Selected</option>
+            </select>
+            <button class="track-btn" onclick="viewApplicationTracking(this)">Track</button>
+        </div></td>`;
     table.appendChild(row);
+    document.getElementById("applicationCount").textContent = table.querySelectorAll("tr").length;
+}
 
+function updateApplicationStatus(select) {
+    const row = select.closest("tr");
+    row.dataset.status = select.value;
+    showSuccess("📌 Application status updated to " + select.value);
+}
 
-    const count =
-        table.querySelectorAll(
-            "tr"
-        ).length;
-
-
-    document.getElementById(
-        "applicationCount"
-    ).textContent =
-        count;
-
+function viewApplicationTracking(button) {
+    const row = button.closest("tr");
+    const position = row.dataset.position || row.cells[0].textContent.trim();
+    const company = row.dataset.company || row.cells[1].textContent.trim();
+    const status = row.dataset.status || "Applied";
+    const steps = ["Applied","Under Review","Shortlisted","Interview","Selected"];
+    const activeIndex = steps.indexOf(status);
+    const modal = document.createElement("div");
+    modal.className = "tracking-modal";
+    modal.onclick = e => { if(e.target === modal) modal.remove(); };
+    modal.innerHTML = `<div class="tracking-box">
+        <h2>📄 Application Tracking</h2>
+        <div class="tracking-subtitle">${position} • ${company}</div>
+        <div class="tracking-steps">${steps.map((step,i)=>`<div class="tracking-step ${i<=activeIndex?"active":""}"><div class="tracking-dot">${i<=activeIndex?"✓":i+1}</div><strong>${step}</strong></div>`).join("")}</div>
+        <p><strong>Current Status:</strong> ${status}</p>
+        <button class="tracking-close" onclick="this.closest('.tracking-modal').remove()">Close</button>
+    </div>`;
+    document.body.appendChild(modal);
 }
 
 
@@ -1954,6 +2423,20 @@ function showSuccess(message) {
 
 }
 
+
+/* ================= LEARNING ================= */
+
+function startLearning(button) {
+    const item = button.closest(".learning-item");
+    const course = item
+        ? item.querySelector("h3").textContent.trim()
+        : "Learning program";
+
+    button.textContent = "Started ✓";
+    button.style.background = "#16a34a";
+
+    showSuccess("📚 " + course + " added to your learning plan!");
+}
 
 /* ================= LOGOUT ================= */
 
@@ -2018,8 +2501,242 @@ document
 /* ================= START ================= */
 
 loadStudent();
+// =========================
+// SKILL ASSESSMENT
+// =========================
 
+let assessmentQuestions = [];
+let currentQuestion = 0;
+let assessmentAnswers = [];
+
+async function openAssessment() {
+    try {
+        const response = await fetch(
+            "http://localhost:5000/api/assessment/questions"
+        );
+
+        assessmentQuestions = await response.json();
+
+        currentQuestion = 0;
+        assessmentAnswers = [];
+
+        document.getElementById("assessmentModal").style.display = "flex";
+
+        showQuestion();
+
+    } catch (error) {
+        console.error(error);
+        alert("Unable to load assessment. Please check the backend.");
+    }
+}
+
+function closeAssessment() {
+    document.getElementById("assessmentModal").style.display = "none";
+}
+
+function showQuestion() {
+
+    const question = assessmentQuestions[currentQuestion];
+
+    document.getElementById("assessmentProgress").textContent =
+        `Question ${currentQuestion + 1} of ${assessmentQuestions.length}`;
+
+    document.getElementById("assessmentQuestion").textContent =
+        question.question;
+
+    const progress =
+        ((currentQuestion + 1) / assessmentQuestions.length) * 100;
+
+    document.getElementById("assessmentProgressBar").style.width =
+        `${progress}%`;
+
+    const optionsContainer =
+        document.getElementById("assessmentOptions");
+
+    optionsContainer.innerHTML = "";
+
+    question.options.forEach(option => {
+
+        const button = document.createElement("button");
+
+        button.className = "assessment-option";
+        button.textContent = option;
+
+        button.onclick = () => {
+            document
+                .querySelectorAll(".assessment-option")
+                .forEach(btn => btn.classList.remove("selected"));
+
+            button.classList.add("selected");
+
+            assessmentAnswers[currentQuestion] = {
+                questionId: question.id,
+                answer: option
+            };
+        };
+
+        optionsContainer.appendChild(button);
+    });
+
+    document.getElementById("nextQuestionBtn").textContent =
+        currentQuestion === assessmentQuestions.length - 1
+            ? "Submit Assessment ✓"
+            : "Next →";
+}
+
+async function nextQuestion() {
+
+    if (!assessmentAnswers[currentQuestion]) {
+        alert("Please select an answer first.");
+        return;
+    }
+
+    if (currentQuestion < assessmentQuestions.length - 1) {
+
+        currentQuestion++;
+        showQuestion();
+
+    } else {
+
+        await submitAssessment();
+    }
+}
+async function submitAssessment() {
+    try {
+        const response = await fetch(
+            "http://localhost:5000/api/assessment/submit",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    studentId: 1,
+                    answers: assessmentAnswers
+                })
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            alert(result.message || "Assessment failed.");
+            return;
+        }
+
+        closeAssessment();
+
+        await loadStudent();
+
+        showAssessmentResult(result);
+
+    } catch (error) {
+        console.error(error);
+        alert("Unable to submit assessment.");
+    }
+}
+function showAssessmentResult(result) {
+
+    document
+        .querySelectorAll(".assessment-result-modal")
+        .forEach(modal => modal.remove());
+
+    const skills = result.detectedSkills.length
+        ? result.detectedSkills.join(", ")
+        : "No new skills detected";
+
+    const resultModal = document.createElement("div");
+
+    resultModal.className = "assessment-result-modal";
+
+    resultModal.innerHTML = `
+        <div class="assessment-result-box">
+
+            <div class="result-icon">🎉</div>
+
+            <h2>Assessment Completed!</h2>
+
+            <p class="result-subtitle">
+                Your skill profile has been updated successfully.
+            </p>
+
+            <div class="result-score">
+                <strong>${result.score}%</strong>
+                <span>Assessment Score</span>
+            </div>
+
+            <div class="result-grid">
+
+                <div class="result-card">
+                    <strong>${result.correct}/${result.total}</strong>
+                    <span>Correct Answers</span>
+                </div>
+
+                <div class="result-card">
+                    <strong>${result.jobReadiness}%</strong>
+                    <span>Job Readiness</span>
+                </div>
+
+            </div>
+
+            <div class="detected-skills">
+                <h3>🧠 Skills Detected</h3>
+                <p>${skills}</p>
+            </div>
+
+            <button class="result-close-btn"
+                onclick="this.closest('.assessment-result-modal').remove()">
+                Continue to Dashboard →
+            </button>
+
+        </div>
+    `;
+
+    document.body.appendChild(resultModal);
+}
 </script>
+<!-- Skill Assessment Modal -->
+<div id="assessmentModal" class="assessment-modal" onclick="if(event.target === this) closeAssessment()">
 
+    <div class="assessment-box">
+
+        <div class="assessment-header">
+
+            <div>
+                <span id="assessmentProgress">
+                    Question 1 of 8
+                </span>
+
+                <h2 id="assessmentQuestion">
+                    Loading question...
+                </h2>
+            </div>
+
+            <button class="close-btn" onclick="closeAssessment()">
+                ×
+            </button>
+
+        </div>
+
+        <div class="progress-bar">
+            <div id="assessmentProgressBar"></div>
+        </div>
+
+        <div id="assessmentOptions"></div>
+
+        <div class="assessment-footer">
+
+            <button
+                id="nextQuestionBtn"
+                class="assessment-btn"
+                onclick="nextQuestion()">
+                Next →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 </body>
 </html>

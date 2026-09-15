@@ -347,6 +347,12 @@
             </li>
 
             <li>
+                <a href="#academic-opportunities">
+                    🎓 FDP & Training
+                </a>
+            </li>
+
+            <li>
                 <a href="#analytics">
                     📈 Analytics
                 </a>
@@ -452,6 +458,46 @@
 
         </div>
 
+
+
+        <!-- ACADEMIC OPPORTUNITIES -->
+
+        <div class="section" id="academic-opportunities">
+
+            <h2>🎓 Academic & Faculty Opportunities</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <span class="tag">Faculty Development Program</span>
+                    <h3>AI & Industry 4.0 FDP</h3>
+                    <p><strong>Duration:</strong> 5 Days</p>
+                    <p><strong>Mode:</strong> Online + Industry Sessions</p>
+                    <p><strong>Focus:</strong> AI, Industry Tools, Emerging Technologies</p>
+                    <button class="btn" onclick="registerAcademic(this)">Register</button>
+                </div>
+
+                <div class="card">
+                    <span class="tag">Industrial Training</span>
+                    <h3>Industry-Oriented Faculty Training</h3>
+                    <p><strong>Duration:</strong> 2 Weeks</p>
+                    <p><strong>Mode:</strong> Hybrid</p>
+                    <p><strong>Focus:</strong> Real-world Projects & Industry Practices</p>
+                    <button class="btn" onclick="registerAcademic(this)">Register</button>
+                </div>
+
+                <div class="card">
+                    <span class="tag">Academician Opportunity</span>
+                    <h3>Industry Mentorship Workshop</h3>
+                    <p><strong>Duration:</strong> 3 Days</p>
+                    <p><strong>Mode:</strong> Online</p>
+                    <p><strong>Focus:</strong> Mentorship, Projects & Skill Mapping</p>
+                    <button class="btn" onclick="registerAcademic(this)">Register</button>
+                </div>
+
+            </div>
+
+        </div>
 
 
         <!-- ANALYTICS -->
@@ -1007,6 +1053,14 @@
                     <p>
                         Software Development
                     </p>
-                    <script src="script.js"></script>
+        <script>
+            function registerAcademic(button) {
+                button.textContent = "Registered ✓";
+                button.style.background = "#16a34a";
+                button.disabled = true;
+            }
+        </script>
+
+        <script src="script.js"></script>
 </body>
 </html>
